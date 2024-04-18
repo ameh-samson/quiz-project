@@ -43,7 +43,7 @@ export default function App() {
 
   // Define function body to increment the question index variable
   function handleAnswerClick() {
-    setCurrentIndex((prev) => prev + 1);
+    setCurrentIndex((value) => value + 1);
   }
 
   // Define a state variable here to track question status
@@ -70,10 +70,7 @@ export default function App() {
             {questions[currentIndex].answerOptions.map((answer) => {
               // Add onClick listener to this button
               return (
-                <button
-                  key={answer.answerText}
-                  onClick={() => handleAnswerClick()}
-                >
+                <button key={answer.answerText} onClick={handleAnswerClick}>
                   {answer.answerText}
                 </button>
               );
