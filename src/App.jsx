@@ -49,8 +49,6 @@ export default function App() {
       : setCurrentIndex((index) => index + 1);
   }
 
-  // Define a state variable here to track question status
-
   return (
     <div className="app">
       {quizFinised ? (
@@ -71,7 +69,6 @@ export default function App() {
 
           <div className="answer-section">
             {questions[currentIndex].answerOptions.map((answer) => {
-              // Add onClick listener to this button
               return (
                 <button key={answer.answerText} onClick={handleAnswerClick}>
                   {answer.answerText}
