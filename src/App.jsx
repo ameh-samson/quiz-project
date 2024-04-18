@@ -42,7 +42,9 @@ export default function App() {
   ];
 
   // Define function body to increment the question index variable
-  function handleAnswerClick() {}
+  function handleAnswerClick() {
+    setCurrentIndex((prev) => prev + 1);
+  }
 
   // Define a state variable here to track question status
 
@@ -58,17 +60,22 @@ export default function App() {
             <div className="question-count">
               <span>Question 1</span>/{questions.length}
             </div>
-            {/* You should change the "0" here to a state variable */}
+
             <div className="question-text">
               {questions[currentIndex].questionText}
             </div>
           </div>
-          {/* You should change the "0" here to a state variable */}
+
           <div className="answer-section">
-            {questions[0].answerOptions.map((answer) => {
+            {questions[currentIndex].answerOptions.map((answer) => {
               // Add onClick listener to this button
               return (
-                <button key={answer.answerText}>{answer.answerText}</button>
+                <button
+                  key={answer.answerText}
+                  onClick={() => handleAnswerClick()}
+                >
+                  {answer.answerText}
+                </button>
               );
             })}
           </div>
