@@ -1,6 +1,7 @@
-import React from "react";
+import { useState } from "react";
 
 export default function App() {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const questions = [
     {
       questionText: "What is the capital of France?",
@@ -58,7 +59,9 @@ export default function App() {
               <span>Question 1</span>/{questions.length}
             </div>
             {/* You should change the "0" here to a state variable */}
-            <div className="question-text">{questions[0].questionText}</div>
+            <div className="question-text">
+              {questions[currentIndex].questionText}
+            </div>
           </div>
           {/* You should change the "0" here to a state variable */}
           <div className="answer-section">
