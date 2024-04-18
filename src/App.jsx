@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export default function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [quizFinised, setQuizFinished] = useState(false);
   const questions = [
     {
       questionText: "What is the capital of France?",
@@ -43,14 +44,16 @@ export default function App() {
 
   // Define function body to increment the question index variable
   function handleAnswerClick() {
-    setCurrentIndex((value) => value + 1);
+    currentIndex === questions.length - 1
+      ? setQuizFinished(true)
+      : setCurrentIndex((index) => index + 1);
   }
 
   // Define a state variable here to track question status
 
   return (
     <div className="app">
-      {false ? (
+      {quizFinised ? (
         <div className="score-section">
           You scored 1 out of {questions.length}
         </div>
