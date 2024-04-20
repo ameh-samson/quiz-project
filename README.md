@@ -18,7 +18,9 @@ This repository contains a simple quiz application built using React. The applic
 
 ### Usage
 
-- run npm i
+- clone repo
+- run "npm i" to install
+- run "npm run dev" to view
 
 ### Credit
 
