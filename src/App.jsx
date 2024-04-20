@@ -3,6 +3,8 @@ import { useState } from "react";
 export default function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [quizFinised, setQuizFinished] = useState(false);
+  const [score, setScore] = useState(0);
+
   const questions = [
     {
       questionText: "What is the capital of France?",
@@ -43,7 +45,12 @@ export default function App() {
   ];
 
   // Define function body to increment the question index variable
-  function handleAnswerClick() {
+  function handleAnswerClick(isCorrect) {
+    // Check if correct answer is pressed.
+    if (isCorrect) {
+      setScore(score + 1);
+    }
+
     currentIndex === questions.length - 1
       ? setQuizFinished(true)
       : setCurrentIndex((index) => index + 1);
@@ -53,7 +60,7 @@ export default function App() {
     <div className="app">
       {quizFinised ? (
         <div className="score-section">
-          You scored 1 out of {questions.length}
+          You scored {score} out of {questions.length}
         </div>
       ) : (
         <>
@@ -70,7 +77,10 @@ export default function App() {
           <div className="answer-section">
             {questions[currentIndex].answerOptions.map((answer) => {
               return (
-                <button key={answer.answerText} onClick={handleAnswerClick}>
+                <button
+                  key={answer.answerText}
+                  onClick={() => handleAnswerClick(answer.isCorrect)}
+                >
                   {answer.answerText}
                 </button>
               );
